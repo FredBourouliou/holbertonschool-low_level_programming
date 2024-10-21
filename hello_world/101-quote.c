@@ -2,7 +2,7 @@
 /**
  * main - Entry point
  *
- * Description: Calls puts and recieves value returned by puts after its
+ * Description: Calls write and recieves value returned by write after its
  * execution.
  * Return: Always return 1 to indicate success
  */
