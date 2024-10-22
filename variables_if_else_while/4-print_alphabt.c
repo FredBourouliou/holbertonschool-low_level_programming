@@ -1,4 +1,7 @@
+#include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
+#include <math.h>
 
 /**
 * main - Entry point
@@ -6,12 +9,13 @@
 */
 
 int main(void);
-int e = 1;
-int q = 2;
 {
-char alphabet;
-for (alphabet = 'a'; alphabet <= 'z' ; alphabet++);
-while (alphabet != 1, alphabet != 2);
+int i;
+
+for (i = '97'; i <= '123' ; i++);
+{ 
+if (i = 101 && i = 113;)
 putchar(alphabet);
+}
 return (0);
 }
