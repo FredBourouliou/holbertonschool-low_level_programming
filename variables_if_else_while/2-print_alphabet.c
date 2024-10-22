@@ -5,11 +5,9 @@
 * Return: Always 0 (Success)
 */
 int main(void)
-{
-for (int i = 65; i <= 122; i++)
-{
-putchar(i);
-putchar(' ');
-}
+char alphabet;
+for (alphabet = 'a'; alphabet <= 'z' ; alphabet++)
+putchar(alphabet);
+putchar('\n');
 return (0);
 }
