@@ -1,19 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
-
 /**
 * main - Entry point
 * Return: Always 0 (Success)
 */
-
 int main(void);
 {
-int i;
-for (i = '97'; i <= '123' ; i++);
-{ 
-if (i = 101 && i = 113;)
+char alphabet;
+for (alphabet = 'a'; alphabet <= 'z' ; alphabet++)
+if (alphabet != 'q', alphabet != 'e')
 putchar(alphabet);
-}
+else
+continue;
+putchar('/n')
 return (0);
 }
