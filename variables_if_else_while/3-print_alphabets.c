@@ -4,13 +4,13 @@
 * main - Entry point
 * Return: Always 0 (Success)
 */
-
 int main(void)
 {
-for (int i = 65; i <= 122; i++)
-{
-putchar(i);
-putchar(' ');
-}
-return 0;
+for (ch= ‘A’; ch<= ‘Z’; ch++)
+putchar(ch);
+putchar (‘\n’ ) ;
+for (ch= ‘a’; ch<= ‘z’; ch++)
+putchar(ch);
+putchar (‘\n’) ;
+getch();
 }
