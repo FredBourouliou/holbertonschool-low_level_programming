@@ -5,7 +5,7 @@
 */
 int main(void)
 {
-int i;
+int n;
 char alphabet;
 for (n = 0; n <= 9; n++)
 putchar('0' + n);
