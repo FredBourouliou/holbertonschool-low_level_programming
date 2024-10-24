@@ -5,12 +5,13 @@
  * Return: Always 0 success
  *
  */
-void print_alphabet(void)
+int main(void)
 {
-char c;
-for (c = 'a'; c <= 'z'; c++)
+char letter;
+for (letter = 'a'; letter <= 'z'; ++letter)
 {
-_putchar(c);
+putchar(letter);
 }
-_putchar('\n');
+putchar('\n');
+return (0);
 }
