@@ -5,7 +5,7 @@
  *
  * Return: Always 0.
  */
-int main(void)
+int _islower(int c);
 {
     int r;
 
