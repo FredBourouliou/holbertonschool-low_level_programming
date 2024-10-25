@@ -1,29 +1,11 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * _abs - main entry
  * return: always 0 success
  */
-int _abs(int)
-unsigned int number;
-if (num < 0)
+int _abs(int n)
 {
-number = -num;
-putchar('-');
-}
-else
-{
-number = num;
-}
-if (number / 10)
-{
-print_number(number / 10);
-}
-putchar('0' + (number % 10));
-}
-int main(void)
-{
-int num = 1028;
-print_number(num);
-putchar('\n');
+int abs (n);
 return (0);
 }
