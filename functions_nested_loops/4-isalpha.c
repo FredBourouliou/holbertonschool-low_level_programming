@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * int _isalpha(int c)
+ * _isalpha - main entry
  * @c: sign of a letter
  * Return: 1 for letter or 0 for anything else
  */
