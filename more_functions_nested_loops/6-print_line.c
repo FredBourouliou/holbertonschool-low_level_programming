@@ -2,7 +2,7 @@
 /**
   * print_line - entry point
   * @n: the number of times the character _ should be printed
-  * Return: empty 
+  * Return: empty
   */
 void print_line(int n)
 {
