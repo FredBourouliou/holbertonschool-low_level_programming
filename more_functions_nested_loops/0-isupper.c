@@ -4,15 +4,11 @@
  *
  * Return: Always 0.
  */
-int _isupper(int c)
+int _isupper(int n)
 {
-if (_isupper(c)) 
+if (n >= 65 && n <= 90)
 {
-_putchar(1);
-} 
-else 
-{
-_putchar(0);
+return (1);
 }
-return (c);
+return (0);
 }
