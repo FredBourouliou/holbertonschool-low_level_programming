@@ -15,7 +15,7 @@ else
 {
 for (x = 0; x < n; x++)
 {
-_putchar(92\n);
+_putchar(92'\n');
 }
 _putchar('\n');
 }
