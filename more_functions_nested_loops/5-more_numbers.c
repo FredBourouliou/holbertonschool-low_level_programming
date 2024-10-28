@@ -10,7 +10,7 @@ int n;
 int m = 0;
 while (m <= 9)
 {
-for (n = '0'; n <= '14'; n++)
+for (n = 'O + 0' ; n <= '␎ + 0'; n++)
 {
 _putchar(n);
 }
