@@ -4,7 +4,7 @@
  * @n: he number of times the character \ should be printed
  * return: empty
  */
-void print_line(int n)
+void print_diagonal(int n)
 {
 int x;
 if (n <= 0)
