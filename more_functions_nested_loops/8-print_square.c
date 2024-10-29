@@ -15,7 +15,7 @@ else
 {
 for (x = 0; x < size; x++)
 for (y = 0; y < x; y++)
-for (z = 0, z < y; z++)
+for (z = 0; z < y; z++)
 _putchar(35);
 _putchar('\n');
 }
