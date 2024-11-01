@@ -11,15 +11,13 @@ int sum = 0;
 char password[100];
 int i = 0;
 srand(time(0));
-while (sum < 2772)
+while (sum < 2772 - 126)
 {
 int rand_char = rand() % 94 + 33;
-if (sum + rand_char <= 2772)
-{
 password[i++] = rand_char;
 sum += rand_char;
 }
-}
+password[i++] = 2772 - sum;
 password[i] = '\0';
 printf("%s\n", password);
 return (0);
