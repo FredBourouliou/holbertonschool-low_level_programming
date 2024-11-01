@@ -20,5 +20,5 @@ else if (result > 0)
 break;
 i++;
 }
-return (result * sign);
+return (result *sign);
 }
