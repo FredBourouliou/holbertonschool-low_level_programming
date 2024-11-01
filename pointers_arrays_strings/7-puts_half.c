@@ -21,8 +21,8 @@ start = (len + 1) / 2;
 }
 while (str[start] != '\0')
 {
-putchar(str[start]);
+_putchar(str[start]);
 start++;
 }
-putchar('\n');
+_putchar('\n');
 }
