@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _strncat - Concatenates two strings
+ * *_strncat - Concatenates two strings
  * @dest: The destination string
  * @src: The source string
  * @n: The maximum number of bytes
@@ -20,5 +20,5 @@ i++;
 j++;
 }
 dest[i] = '\0';
-return dest;
+return (dest);
 }
