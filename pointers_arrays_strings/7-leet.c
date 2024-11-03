@@ -15,7 +15,7 @@ for (j = 0; letters[j] != '\0'; j++)
 {
 if (str[i] == letters[j])
 {
-str[i] = leet_chars[j / 2];
+str[i] = leet_chars[j];
 break;
 }
 }
