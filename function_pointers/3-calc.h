@@ -16,4 +16,5 @@ typedef struct op
     int op_mod(int a, int b);
     int (*get_op_func(char *s))(int, int);
 } op_t;
-#endiff
+#endif
+#endif
