@@ -1,43 +1,63 @@
-#include <stdlib.h>
 #include "3-calc.h"
 #include <stdio.h>
-#include <string.h>
-
-typedef struct {
-    char *op;
-    int (*func)(int, int);
-} ops_t;
-int add(int a, int b) { return a + b; }
-int sub(int a, int b) { return a - b; }
-int mul(int a, int b) { return a * b; }
-int op_mod(int a, int b) { return a % b;}
-int divide(int a, int b) {
-    if (b == 0)
-    {
-        fprintf(stderr, "divided by zero\n");
-    }    return a / b;
-}ops_t ops [] = {
-    {"+", add},
-    {"-", sub},
-    {"*", mul},
-    {"/", divide},
-    {NULL, NULL}
-};int main(int argc, char *argv[])
+#include <stdlib.h>
+/**
+ * op_add - adds two numbers
+ * @a: first number
+ * @b: second number
+ * Return: sum of a and b
+ */
+int op_add(int a, int b)
 {
-    if (argc < 4)
-    {
-        fprintf(stderr, "usage: <num1> <operateur> <num2>%s\n", argv[0]);
-        return EXIT_FAILURE;
-    }    int (*opera)(int, int) = NULL;    int num1 = atoi(argv[1]);
-    char *operateur = argv[2];
-    int num2 = atoi(argv[3]);    for (int i = 0; ops[i].op != NULL; i++)
-    {
-        if (strcmp(ops[i].op, operateur) == 0)
-        {
-            opera = ops[i].func;
-            break;
-        }        if (opera == NULL)
-        {
-            fprintf(stderr, "operateur inconnu%s\n", argv[2]);
-        }
-    }    int result = opera(num1, num2);    printf("result: %d\n", result);    return EXIT_SUCCESS;}
+return (a + b);
+}
+/**
+ * op_sub - subtracts two numbers
+ * @a: first number
+ * @b: second number
+ * Return: difference of a and b
+ */
+int op_sub(int a, int b)
+{
+return (a - b);
+}
+/**
+ * op_mul - multiplies two numbers
+ * @a: first number
+ * @b: second number
+ * Return: product of a and b
+ */
+int op_mul(int a, int b)
+{
+return (a * b);
+}
+/**
+ * op_div - divides two numbers
+ * @a: first number
+ * @b: second number
+ * Return: result of division of a by b
+ */
+int op_div(int a, int b)
+{
+if (b == 0)
+{
+printf("Error\n");
+exit(100);
+}
+return (a / b);
+}
+/**
+ * op_mod - modulo of two numbers
+ * @a: first number
+ * @b: second number
+ * Return: remainder of division of a by b
+ */
+int op_mod(int a, int b)
+{
+if (b == 0)
+{
+printf("Error\n");
+exit(100);
+}
+return (a % b);
+}
