@@ -3,8 +3,8 @@
 #include <stdarg.h>
 /**
  * print_numbers - a function that prints numbers
- * *separator: character
- * n: integer
+ * @separator: character
+ * @n: integer
  * Return: 0
  */
 void print_numbers(const char *separator, const unsigned int n, ...)

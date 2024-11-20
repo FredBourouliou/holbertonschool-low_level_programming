@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include "variadic_functions.h"
 /**
- * print_strings - a function that prints strings 
- * *separator: a character
- * n: an integer
+ * print_strings - a function that prints strings
+ * @separator: a character
+ * @n: an integer
  * Return: 0
  */
 void print_strings(const char *separator, const unsigned int n, ...)
