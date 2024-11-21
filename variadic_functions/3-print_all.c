@@ -1,4 +1,6 @@
 #include "variadic_functions.h"
+#include <stdarg.h>
+#include <stdio.h>
 /**
  * print_all - Prints anything based on the format.
  * @format: A list of types of arguments passed to the function.
