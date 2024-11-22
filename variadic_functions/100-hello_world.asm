@@ -1,19 +1,19 @@
 section .data
-    msg db "Hello, World", 0xA  ; Message à afficher suivi d'un saut de ligne
-    len equ $ - msg             ; Longueur du message
+    message db "Hello, World", 10 ; Le message à imprimer
+    msg_len equ $ - message       ; Longueur du message
 
 section .text
-    global _start               ; Point d'entrée du programme
+    global _start                 ; Point d'entrée pour macOS
 
 _start:
-    ; Appel système write
-    mov rax, 1                  ; syscall numéro pour write
-    mov rdi, 1                  ; file descriptor pour stdout
-    lea rsi, [rel msg]          ; adresse relative du message
-    mov rdx, len                ; longueur du message
-    syscall                     ; appel système
+    ; write syscall
+    mov rax, 0x2000004           ; write (syscall numéro pour macOS)
+    mov rdi, 1                   ; descripteur de fichier : 1 (stdout)
+    lea rsi, [rel message]       ; charge l'adresse relative de `message`
+    mov rdx, msg_len             ; longueur du message
+    syscall                      ; exécute le syscall
 
-    ; Appel système exit
-    mov rax, 60                 ; syscall numéro pour exit
-    xor rdi, rdi                ; code de retour 0
-    syscall                     ; appel système
+    ; exit syscall
+    mov rax, 0x2000001           ; exit (syscall numéro pour macOS)
+    xor rdi, rdi                 ; code de retour : 0
+    syscall                      ; exécute le syscall
