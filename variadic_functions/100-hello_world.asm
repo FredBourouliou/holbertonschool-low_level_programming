@@ -5,7 +5,8 @@ _start:
     // Appel système write
     mov x8, #64                      // Numéro du syscall pour write
     mov x0, #1                       // File descriptor: STDOUT
-    ldr x1, =msg                     // Charger l'adresse de msg dans x1
+    adrp x1, msg                     // Charger la page de msg dans x1
+    add x1, x1, :lo12:msg            // Ajouter l'offset pour l'adresse complète
     mov x2, #13                      // Longueur du message ("Hello, World\n")
     svc #0                           // Appel système
 
