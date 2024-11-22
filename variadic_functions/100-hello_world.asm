@@ -1,16 +1,19 @@
 section .data
-msg db 'Hello, World', 0xA
-len equ $ - msg
+    msg db "Hello, World", 0xA  ; Message à afficher, suivi d'un saut de ligne
+    len equ $ - msg             ; Longueur du message
 
 section .text
-global _start
+    global _start               ; Point d'entrée du programme
 
 _start:
-mov rax, 1      ; write
-mov rdi, 1      ; stdout
-mov rsi, msg    ; address of message
-mov rdx, len    ; length of message
-syscall         ; perform system call
-mov rax, 60     ; exit
-xor rdi, rdi    ; status 0
-syscall         ; perform system call
+    ; Appel système write
+    mov rax, 1                  ; syscall number pour write
+    mov rdi, 1                  ; file descriptor pour stdout
+    mov rsi, msg                ; adresse du message à afficher
+    mov rdx, len                ; longueur du message
+    syscall                     ; appel système
+
+    ; Appel système exit
+    mov rax, 60                 ; syscall number pour exit
+    xor rdi, rdi                ; code de retour 0
+    syscall                     ; appel système
