@@ -1,20 +1,19 @@
-    .section __TEXT,__text           // Section texte pour le code exécutable
-    .global _start                   // Point d'entrée global
+section .data
+    message db "Hello, World", 0xA  ; Message with a newline character
+    msglen equ $ - message          ; Length of the message
+
+section .text
+    global _start                   ; Declare the entry point
 
 _start:
-    // Appel système write
-    mov x8, #64                      // Numéro du syscall pour write (64 pour ARM64 sur macOS)
-    mov x0, #1                       // File descriptor: STDOUT
-    adrp x1, msg                     // Charger la page de msg dans x1
-    add x1, x1, :lo12:msg            // Ajouter l'offset pour obtenir l'adresse complète
-    mov x2, #13                      // Longueur fixe du message "Hello, World\n"
-    svc #0                           // Appel système
+    ; System call: write
+    mov rax, 1                      ; Syscall number 1: write
+    mov rdi, 1                      ; File descriptor 1: stdout
+    mov rsi, message                ; Address of the message
+    mov rdx, msglen                 ; Length of the message
+    syscall                         ; Execute the syscall
 
-    // Appel système exit
-    mov x8, #93                      // Numéro du syscall pour exit
-    mov x0, #0                       // Code de retour : 0 (succès)
-    svc #0                           // Appel système
-
-    .section __DATA,__data           // Section data pour les données
-msg:
-    .asciz "Hello, World\n"          // Message ASCII avec un saut de ligne
+    ; System call: exit
+    mov rax, 60                     ; Syscall number 60: exit
+    xor rdi, rdi                    ; Return code 0
+    syscall                         ; Execute the syscall
