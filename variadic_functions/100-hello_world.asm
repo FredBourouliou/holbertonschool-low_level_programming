@@ -1,19 +1,17 @@
-section .data
-    message db "Hello, World", 0xA  ; Message with a newline character
-    msglen equ $ - message          ; Length of the message
-
 section .text
-    global _start                   ; Declare the entry point
+global main
 
-_start:
-    ; System call: write
-    mov rax, 1                      ; Syscall number 1: write
-    mov rdi, 1                      ; File descriptor 1: stdout
-    mov rsi, message                ; Address of the message
-    mov rdx, msglen                 ; Length of the message
-    syscall                         ; Execute the syscall
+main:
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, msg
+	mov rdx, msglen
+	syscall
 
-    ; System call: exit
-    mov rax, 60                     ; Syscall number 60: exit
-    xor rdi, rdi                    ; Return code 0
-    syscall                         ; Execute the syscall
+	mov rax, 60
+	mov rdi, 0
+	syscall
+
+section .rodata
+	msg: db "Hello, Holberton", 10
+	msglen: equ $ - msg
