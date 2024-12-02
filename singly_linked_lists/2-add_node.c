@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <string.h>
 #include "lists.h"
 /**
@@ -24,4 +25,19 @@ new_node->len = strlen(str);
 new_node->next = *head;
 *head = new_node;
 return (new_node);
+}
+/**
+  * _strlen - Returns the length of a string
+  * @s: String to count
+  * Return: String length
+  */
+int _strlen(const char *s)
+{
+nt c = 0;
+while (*s)
+{
+s++;
+c++;
+}
+return (c);
 }
