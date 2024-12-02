@@ -20,7 +20,7 @@ if (new_node->str == NULL)
 free(new_node);
 return (NULL);
 }
-new_node->len = strlen(str);
+new_node->len = _strlen(str);
 new_node->next = NULL;
 if (*head == NULL)
 {
@@ -32,4 +32,19 @@ while (temp->next != NULL)
 temp = temp->next;
 temp->next = new_node;
 return (new_node);
+}
+/**
+ * _strlen - Returns the length of a string
+ * @s: String to count
+ * Return: String length
+ */
+int _strlen(const char *s)
+{
+int c = 0;
+while (*s)
+{
+s++;
+c++;
+}
+return (c);
 }
