@@ -62,4 +62,4 @@ int main(int argc, char *argv[])
 		error_handler(100, "Error: Can't close fd %d\n", file_to);
 
 	return (0);
-} 
+}
