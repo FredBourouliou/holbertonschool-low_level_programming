@@ -16,19 +16,15 @@ int create_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 
-	/* Ouvre/crée le fichier avec les permissions rw------- (0600) */
 	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
 	if (fd == -1)
 		return (-1);
 
-	/* Si text_content n'est pas NULL, écrit dans le fichier */
 	if (text_content != NULL)
 	{
-		/* Calcule la longueur de text_content */
 		while (text_content[len])
 			len++;
 
-		/* Écrit le contenu dans le fichier */
 		bytes_written = write(fd, text_content, len);
 		if (bytes_written == -1 || bytes_written != len)
 		{
@@ -39,4 +35,4 @@ int create_file(const char *filename, char *text_content)
 
 	close(fd);
 	return (1);
-} 
+}
