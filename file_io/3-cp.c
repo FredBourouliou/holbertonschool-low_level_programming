@@ -39,14 +39,8 @@ void copy_file(int fd_from, int fd_to, char *src, char *dest)
 	char buffer[BUFFER_SIZE];
 	ssize_t bytes_read, bytes_written;
 
-	bytes_read = read(fd_from, buffer, BUFFER_SIZE);
-	if (bytes_read == -1)
+	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
-		close(fd_from);
-		error_exit_str(98, "Error: Can't read from file %s\n", src);
-	}
-
-	do {
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written == -1)
 		{
@@ -54,7 +48,7 @@ void copy_file(int fd_from, int fd_to, char *src, char *dest)
 			close(fd_to);
 			error_exit_str(99, "Error: Can't write to %s\n", dest);
 		}
-	} while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0);
+	}
 
 	if (bytes_read == -1)
 	{
@@ -73,6 +67,8 @@ void copy_file(int fd_from, int fd_to, char *src, char *dest)
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to;
+	char buffer[BUFFER_SIZE];
+	ssize_t bytes_read;
 
 	if (argc != 3)
 		error_exit_str(97, "Usage: cp file_from file_to\n", "");
@@ -80,6 +76,13 @@ int main(int argc, char *argv[])
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
 		error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+
+	bytes_read = read(fd_from, buffer, BUFFER_SIZE);
+	if (bytes_read == -1)
+	{
+		close(fd_from);
+		error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+	}
 
 	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_to == -1)
