@@ -33,11 +33,22 @@ void error_exit_str(int code, char *msg, char *arg)
  * @fd_to: destination file descriptor
  * @src: source filename
  * @dest: destination filename
+ * @first_buffer: first buffer read
+ * @first_bytes: number of bytes in first buffer
  */
-void copy_file(int fd_from, int fd_to, char *src, char *dest)
+void copy_file(int fd_from, int fd_to, char *src, char *dest,
+		char *first_buffer, ssize_t first_bytes)
 {
 	char buffer[BUFFER_SIZE];
 	ssize_t bytes_read, bytes_written;
+
+	bytes_written = write(fd_to, first_buffer, first_bytes);
+	if (bytes_written == -1)
+	{
+		close(fd_from);
+		close(fd_to);
+		error_exit_str(99, "Error: Can't write to %s\n", dest);
+	}
 
 	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
 	{
@@ -91,7 +102,7 @@ int main(int argc, char *argv[])
 		error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
 	}
 
-	copy_file(fd_from, fd_to, argv[1], argv[2]);
+	copy_file(fd_from, fd_to, argv[1], argv[2], buffer, bytes_read);
 
 	if (close(fd_from) == -1)
 		error_exit(100, "Error: Can't close fd %d\n", fd_from);
