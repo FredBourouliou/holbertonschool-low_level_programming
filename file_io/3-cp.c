@@ -4,58 +4,6 @@
 #define BUFFER_SIZE 1024
 
 /**
- * handle_errors - handles error messages and exits
- * @code: exit code
- * @message: error message
- * @arg: argument for error message
- */
-void handle_errors(int code, char *message, char *arg)
-{
-	dprintf(STDERR_FILENO, message, arg);
-	exit(code);
-}
-
-/**
- * check_args - validates command line arguments
- * @argc: argument count
- * @argv: argument vector
- */
-void check_args(int argc, char *argv[])
-{
-	if (argc != 3)
-		handle_errors(97, "Usage: cp file_from file_to\n", "");
-}
-
-/**
- * copy_content - copies content between files
- * @fd_from: source file descriptor
- * @fd_to: destination file descriptor
- * @argv: argument vector for filenames
- */
-void copy_content(int fd_from, int fd_to, char *argv[])
-{
-	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read, bytes_written;
-
-	do {
-		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written == -1)
-		{
-			close(fd_from);
-			close(fd_to);
-			handle_errors(99, "Error: Can't write to %s\n", argv[2]);
-		}
-	} while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0);
-
-	if (bytes_read == -1)
-	{
-		close(fd_from);
-		close(fd_to);
-		handle_errors(98, "Error: Can't read from file %s\n", argv[1]);
-	}
-}
-
-/**
  * main - copies the content of a file to another file
  * @argc: number of arguments
  * @argv: array of arguments
@@ -64,35 +12,77 @@ void copy_content(int fd_from, int fd_to, char *argv[])
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to;
+	ssize_t bytes_read, bytes_written;
 	char buffer[BUFFER_SIZE];
-	ssize_t bytes_read;
 
-	check_args(argc, argv);
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
-		handle_errors(98, "Error: Can't read from file %s\n", argv[1]);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 
 	bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
 	{
 		close(fd_from);
-		handle_errors(98, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
 
 	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd_to == -1)
 	{
 		close(fd_from);
-		handle_errors(99, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 
-	copy_content(fd_from, fd_to, argv);
+	bytes_written = write(fd_to, buffer, bytes_read);
+	if (bytes_written == -1)
+	{
+		close(fd_from);
+		close(fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+
+	while ((bytes_read = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+	{
+		bytes_written = write(fd_to, buffer, bytes_read);
+		if (bytes_written == -1)
+		{
+			close(fd_from);
+			close(fd_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
+	}
+
+	if (bytes_read == -1)
+	{
+		close(fd_from);
+		close(fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 
 	if (close(fd_from) == -1)
-		handle_errors(100, "Error: Can't close fd %d\n", argv[1]);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
+		exit(100);
+	}
 	if (close(fd_to) == -1)
-		handle_errors(100, "Error: Can't close fd %d\n", argv[2]);
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
+		exit(100);
+	}
 
 	return (0);
 }
