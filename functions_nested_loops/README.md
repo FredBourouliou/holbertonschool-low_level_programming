@@ -1,44 +1,107 @@
-Task  0. _putchar : Write a program that prints _putchar, followed by a new line.
-Task 1. I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game
+# C - Functions and Nested Loops
 
-Write a function that prints the alphabet, in lowercase, followed by a new line
+This project is part of the low-level programming track at Holberton School. It focuses on understanding and implementing functions and nested loops in C programming language.
 
-Task 2. 10 x alphabet
+## Description
 
-Write a function that prints 10 times the alphabet, in lowercase, followed by a new line..
+This repository contains various C programs that demonstrate the use of functions, nested loops, and basic C programming concepts. Each file corresponds to a specific task that helps build fundamental programming skills.
 
-Task 3. islower
+## Flowcharts
 
-Write a function that checks for lowercase character.
+### Times Table Algorithm (100-times_table.c)
+```mermaid
+flowchart TD
+    A[Start] --> B{n <= 15 and n >= 0?}
+    B -- No --> Z[End]
+    B -- Yes --> C[i = 0]
+    C --> D{i <= n?}
+    D -- No --> Z
+    D -- Yes --> E[j = 0]
+    E --> F{j <= n?}
+    F -- No --> G[Print newline]
+    G --> H[i++]
+    H --> D
+    F -- Yes --> I[k = i * j]
+    I --> J{j == 0?}
+    J -- Yes --> K[Print k]
+    J -- No --> L[Print comma and spaces]
+    L --> M{k < 10?}
+    M -- Yes --> N[Print 2 spaces + k]
+    M -- No --> O{k < 100?}
+    O -- Yes --> P[Print 1 space + k]
+    O -- No --> Q[Print k]
+    N --> R[j++]
+    P --> R
+    Q --> R
+    K --> R
+    R --> F
+```
 
-Task 4. isalpha
+### Fibonacci Sequence (104-fibonacci.c)
+```mermaid
+flowchart TD
+    A[Start] --> B[Initialize n1=1, n2=2]
+    B --> C[Print first two numbers]
+    C --> D[count = 3]
+    D --> E{count <= 98?}
+    E -- No --> Z[End]
+    E -- Yes --> F[Calculate next number]
+    F --> G[Handle number overflow]
+    G --> H[Print number]
+    H --> I[Update n1 and n2]
+    I --> J[count++]
+    J --> E
+```
 
-Write a function that checks for alphabetic character.
+## Project Files
 
-Task 5. Sign
+### Mandatory Tasks
 
-Write a function that prints the sign of a number.
+* `0-putchar.c`: A program that prints "_putchar" followed by a new line
+* `1-alphabet.c`: A function that prints the alphabet in lowercase
+* `2-print_alphabet_x10.c`: A function that prints the alphabet 10 times
+* `3-islower.c`: A function that checks for lowercase characters
+* `4-isalpha.c`: A function that checks for alphabetic characters
+* `5-sign.c`: A function that prints the sign of a number
+* `6-abs.c`: A function that computes the absolute value of an integer
+* `7-print_last_digit.c`: A function that prints the last digit of a number
+* `8-24_hours.c`: A function that prints every minute of the day
+* `9-times_table.c`: A function that prints the 9 times table
+* `10-add.c`: A function that adds two integers
+* `11-print_to_98.c`: A function that prints all natural numbers from n to 98
 
-Task 6. There is no such thing as absolute value in this world. You can only estimate what a thing is worth to you
+### Advanced Tasks
 
-Write a function that computes the absolute value of an integer.
+* `100-times_table.c`: A function that prints the n times table, starting with 0
+* `101-natural.c`: A program that computes and prints the sum of all multiples of 3 or 5 below 1024
+* `102-fibonacci.c`: A program that prints the first 50 Fibonacci numbers
+* `103-fibonacci.c`: A program that finds and prints the sum of the even-valued Fibonacci terms under 4,000,000
+* `104-fibonacci.c`: A program that prints the first 98 Fibonacci numbers with advanced number handling
 
-Task 7. There are only 3 colors, 10 digits, and 7 notes; it's what we do with them that's important
+## Requirements
 
-Write a function that prints the last digit of a number.
+* All files are compiled on Ubuntu 20.04 LTS using `gcc`
+* Code follows the Betty style
+* No global variables are used
+* Each file contains no more than 5 functions
+* The only C standard library functions allowed are `printf` and `putchar`
 
-Task 8. I'm federal agent Jack Bauer, and today is the longest day of my life
+## Compilation
 
-Write a function that prints every minute of the day of Jack Bauer, starting from 00:00 to 23:59.
+To compile the files, use:
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o program_name
+```
 
-Task 9. Learn your times table
+## Helper Files
 
-Write a function that prints the 9 times table, starting with 0.
+* `_putchar.c`: Contains the implementation of the `_putchar` function
+* `main.h`: Header file containing all function prototypes
 
-Task 10. a + b
+## Author
 
-Write a function that adds two integers and returns the result.
+Frédéric Bourouliou
 
-Task 11. 98 Battery Street, the OG
+## License
 
-Write a function that prints all natural numbers from n to 98, followed by a new line.
+This project is part of the curriculum of Holberton School.
