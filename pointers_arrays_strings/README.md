@@ -47,7 +47,9 @@ This project covers fundamental concepts in C programming:
 
 ### Advanced Functions
 * `100-rot13.c` - Function that encodes a string using ROT13 cipher
+* `100-set_string.c` - Function that sets the value of a pointer to a char
 * `101-print_number.c` - Function that prints an integer using only _putchar
+* `101-crackme_password` - File containing password for crackme2 executable
 * `102-magic.c` - Program demonstrating pointer arithmetic
 * `103-infinite_add.c` - Function that adds two numbers of any size
 * `104-print_buffer.c` - Function that prints a buffer in a specific format
@@ -83,7 +85,7 @@ graph TD
     E --> I[Advanced String Ops]
     I --> J[string_toupper]
     I --> K[cap_string]
-    I --> L[rot13]
+    I --> L[rot13/set_string]
     
     A --> M[Array Operations]
     M --> N[print_array]
@@ -94,4 +96,5 @@ graph TD
     Q --> R[print_number]
     Q --> S[infinite_add]
     Q --> T[print_buffer]
+    Q --> U[crackme]
 ```
