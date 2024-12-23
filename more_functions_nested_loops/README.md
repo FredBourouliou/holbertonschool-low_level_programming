@@ -1,42 +1,112 @@
-task 0. isupper 
-Write a function that checks for uppercase character.
+# C - More functions, more nested loops
 
-Task  1. isdigit 
-Write a function that checks for a digit (0 through 9).
+## Description
+This project contains C programming exercises focusing on functions and nested loops. Each file demonstrates different aspects of C programming, from basic character checks to complex number operations.
 
-Task  2. Collaboration is multiplication 
-Write a function that multiplies two integers.
+## Author
+* Frédéric Bourouliou
 
-Task  3. The numbers speak for themselves 
-Write a function that prints the numbers, from 0 to 9, followed by a new line.
+## Files Description
 
-Task  4. I believe in numbers and signs 
-Write a function that prints the numbers, from 0 to 9, followed by a new line.
+### 0-isupper.c
+* Function that checks for uppercase character
+* Returns 1 if c is uppercase
+* Returns 0 otherwise
 
-Task  5. Numbers constitute the only universal language 
-Write a function that prints 10 times the numbers, from 0 to 14, followed by a new line.
+### 1-isdigit.c
+* Function that checks for a digit (0 through 9)
+* Returns 1 if c is a digit
+* Returns 0 otherwise
 
-Task  6. The shortest distance between two points is a straight line 
-Write a function that draws a straight line in the terminal.
+### 2-mul.c
+* Function that multiplies two integers
+* Returns the result of the multiplication
 
-Task  7. I feel like I am diagonally parked in a parallel universe 
-Write a function that draws a diagonal line on the terminal.
+### 3-print_numbers.c
+* Function that prints the numbers from 0 to 9
+* Uses _putchar function
+* Followed by a new line
 
-Task  8. You are so much sunshine in every square inch 
-Write a function that prints a square, followed by a new line.
+### 4-print_most_numbers.c
+* Function that prints numbers from 0 to 9
+* Does not print 2 and 4
+* Uses _putchar function
+* Followed by a new line
 
-Task  9. Fizz-Buzz 
-The “Fizz-Buzz test” is an interview question designed to help filter out the 99.5% of programming job candidates who can’t seem to program their way out of a wet paper bag.
+### 5-more_numbers.c
+* Function that prints 10 times the numbers from 0 to 14
+* Uses _putchar function
+* Followed by a new line
 
-Write a program that prints the numbers from 1 to 100, followed by a new line. But for multiples of three print Fizz instead of the number and for the multiples of five print Buzz. For numbers which are multiples of both three and five print FizzBuzz.
+### 6-print_line.c
+* Function that draws a straight line in the terminal
+* Uses _putchar function to print underscore character
+* Line ends with a new line
+* If n is 0 or less, only prints new line
 
-Task  10. Triangles 
-Write a function that prints a triangle, followed by a new line.
+### 7-print_diagonal.c
+* Function that draws a diagonal line in the terminal
+* Uses _putchar function to print backslash character
+* Diagonal ends with a new line
+* If n is 0 or less, only prints new line
 
-Task  11. The problem of distinguishing prime numbers from composite numbers and of resolving the latter into their prime factors is known to be one of the most important and useful in arithmetic 
-The prime factors of 1231952 are 2, 2, 2, 2, 37 and 2081.
+### 8-print_square.c
+* Function that prints a square using #
+* Size determines the square's dimensions
+* Followed by a new line
+* If size is 0 or less, only prints new line
 
-Write a program that finds and prints the largest prime factor of the number 612852475143, followed by a new line.
+### 9-fizz_buzz.c
+* Program that prints numbers from 1 to 100
+* For multiples of 3, prints "Fizz"
+* For multiples of 5, prints "Buzz"
+* For multiples of both 3 and 5, prints "FizzBuzz"
+* Each number or word is separated by a space
 
-Task  12. Numbers have life; they're not just symbols on paper 
-Write a function that prints an integer.
+### 10-print_triangle.c
+* Function that prints a triangle using #
+* Size parameter determines triangle size
+* Followed by a new line
+* If size is 0 or less, only prints new line
+
+### 100-prime_factor.c
+* Program that finds and prints the largest prime factor of 612852475143
+* Uses standard library
+* Implements efficient algorithm for prime factorization
+* Handles large numbers effectively
+
+### 101-print_number.c
+* Function that prints an integer with specific constraints
+* Uses only _putchar function to print
+* No use of long data type
+* No arrays or pointers
+* Handles negative numbers and special cases (including INT_MIN)
+
+## Flowchart for print_number function
+```mermaid
+flowchart TD
+    A[Start] --> B{Is n negative?}
+    B -- Yes --> C[Print '-']
+    B -- No --> E[Calculate largest divisor]
+    C --> D{Is n INT_MIN?}
+    D -- Yes --> F[Handle INT_MIN case]
+    D -- No --> G[Make n positive]
+    G --> E
+    E --> H[Print digits]
+    H --> I[End]
+    
+    F --> I
+```
+
+## Compilation
+All files are compiled on Ubuntu 20.04 LTS using:
+```bash
+gcc -Wall -pedantic -Werror -Wextra -std=gnu89
+```
+
+## Requirements
+* All files are written in C
+* Code follows the Betty style
+* No global variables
+* Limited number of functions per file
+* Allowed editors: vi, vim, emacs
