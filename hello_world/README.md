@@ -1,41 +1,74 @@
-Task  0. Preprocessor 
-Write a script that runs a C file through the preprocessor and save the result into another file.
-    The C file name will be saved in the variable $CFILE
-    The output should be saved in the file c
+# C - Hello, World
 
-Task 1. Compiler 
-Write a script that compiles a C file but does not link.
-    The C file name will be saved in the variable $CFILE
-    The output file should be named the same as the C file, but with the extension .o instead of .c.
-        Example: if the C file is main.c, the output file should be main.o
+A collection of C programming exercises focusing on the basics of compilation process and fundamental C programming concepts.
 
-Task  2. Assembler 
-Write a script that generates the assembly code of a C code and save it in an output file.
-    The C file name will be saved in the variable $CFILE
-    The output file should be named the same as the C file, but with the extension .s instead of .c.
-        Example: if the C file is main.c, the output file should be main.s
+## Author
+* **Frédéric Bourouliou**
 
-Task 3. Name 
-Write a script that compiles a C file and creates an executable named cisfun.
-    The C file name will be saved in the variable $CFILE
+## Project Overview
+This project contains various exercises that demonstrate the C compilation process and basic C programming concepts. Each file serves a specific purpose in understanding how C programs are compiled and executed.
 
-Task  4. Hello, puts 
-Write a C program that prints exactly "Programming is like building a multilingual puzzle, followed by a new line.
-    Use the function puts
-    You are not allowed to use printf
-    Your program should end with the value 0
+## Files Description
 
-Task  5. Hello, printf 
-Write a C program that prints exactly with proper grammar, but the outcome is a piece of art,, followed by a new line.
-    Use the function printf
-    You are not allowed to use the function puts
-    Your program should return 0
-    Your program should compile without warning when using the -Wall gcc option
+### Compilation Process Scripts
+* `0-preprocessor` - Script that runs a C file through the preprocessor
+* `1-compiler` - Script that compiles a C file but does not link
+* `2-assembler` - Script that generates the assembly code of a C code
+* `3-name` - Script that compiles a C file and creates an executable named `cisfun`
+* `100-intel` - Script that generates the assembly code (Intel syntax) of a C code
 
-Task  6. Size is not grandeur, and territory does not make a nation 
-Write a C program that prints the size of various types on the computer it is compiled and run on.
-    You should produce the exact same output as in the example
-    Warnings are allowed
-    Your program should return 0
-    If you are using a linux on Vagrant you might have to install the package libc6-dev-i386 to test the -m32 gcc option (normally you dont need to do anything on your sandbox).
+### C Programs
+* `4-puts.c` - C program that prints a specific string using the `puts` function
+* `5-printf.c` - C program that prints a specific string using the `printf` function
+* `6-size.c` - C program that prints the size of various types
+* `101-quote.c` - C program that prints to the standard error
+
+## Project Structure
+```
+.
+├── 0-preprocessor
+├── 1-compiler
+├── 2-assembler
+├── 3-name
+├── 4-puts.c
+├── 5-printf.c
+├── 6-size.c
+├── 100-intel
+└── 101-quote.c
+```
+
+## Learning Objectives
+* Understanding the C compilation process
+* Learning basic C programming concepts
+* Working with standard input/output functions
+* Understanding different data types in C
+
+## Requirements
+* All programs are compiled on Ubuntu 20.04 LTS using `gcc`
+* All files should end with a new line
+* A `README.md` file at the root of the folder
+* No errors and no warnings during compilation
+* Not allowed to use `system`
+* Code should use the Betty style
+
+## Compilation
+All C files can be compiled using gcc:
+```bash
+gcc -Wall -Werror -Wextra -pedantic <filename.c>
+```
+
+## C Compilation Process Flowchart
+```mermaid
+graph LR
+    A[Source Code .c] -->|Preprocessing| B[Expanded Source Code]
+    B -->|Compilation| C[Assembly Code .s]
+    C -->|Assembly| D[Object Code .o]
+    D -->|Linking| E[Executable a.out]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#dfd,stroke:#333,stroke-width:2px
+    style D fill:#fdd,stroke:#333,stroke-width:2px
+    style E fill:#dff,stroke:#333,stroke-width:2px
+```
 
