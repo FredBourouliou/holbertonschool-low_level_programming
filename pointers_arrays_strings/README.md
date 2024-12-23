@@ -45,10 +45,12 @@ This project covers fundamental concepts in C programming:
 * `8-print_diagsums.c` - Function that prints the sum of two diagonals of a square matrix
 * `9-strcpy.c` - Function that copies a string
 
-### Additional Functions
-* `7-puts_half.c` - Function that prints half of a string
-* `100-atoi.c` - Function that converts a string to an integer
-* `101-keygen.c` - Program that generates random valid passwords
+### Advanced Functions
+* `100-rot13.c` - Function that encodes a string using ROT13 cipher
+* `101-print_number.c` - Function that prints an integer using only _putchar
+* `102-magic.c` - Program demonstrating pointer arithmetic
+* `103-infinite_add.c` - Function that adds two numbers of any size
+* `104-print_buffer.c` - Function that prints a buffer in a specific format
 
 ### Support Files
 * `main.h` - Header file containing all function prototypes
@@ -71,29 +73,25 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c
 ```mermaid
 graph TD
     A[Start] --> B[Memory Operations]
-    B --> C[memset]
-    B --> D[memcpy]
-    B --> E[reset_to_98]
-    B --> F[swap]
+    B --> C[memset/memcpy]
+    B --> D[reset/swap]
     
-    A --> G[String Operations]
-    G --> H[strlen/puts]
-    G --> I[string_toupper]
-    G --> J[cap_string]
-    G --> K[rev_string]
+    A --> E[String Operations]
+    E --> F[Basic String Ops]
+    F --> G[strlen/puts]
+    F --> H[strncpy/strcmp]
+    E --> I[Advanced String Ops]
+    I --> J[string_toupper]
+    I --> K[cap_string]
+    I --> L[rot13]
     
-    A --> L[String Search]
-    L --> M[strchr]
-    L --> N[strspn]
-    L --> O[strpbrk]
-    L --> P[strstr]
+    A --> M[Array Operations]
+    M --> N[print_array]
+    M --> O[print_chessboard]
+    M --> P[print_diagsums]
     
-    A --> Q[Array Operations]
-    Q --> R[print_array]
-    Q --> S[print_chessboard]
-    Q --> T[print_diagsums]
-    
-    A --> U[Additional Features]
-    U --> V[atoi]
-    U --> W[keygen]
+    A --> Q[Advanced Features]
+    Q --> R[print_number]
+    Q --> S[infinite_add]
+    Q --> T[print_buffer]
 ```
