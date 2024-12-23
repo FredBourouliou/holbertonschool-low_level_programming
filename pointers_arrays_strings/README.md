@@ -11,6 +11,7 @@ This project covers fundamental concepts in C programming:
 * Array operations
 * String handling functions
 * Memory management with functions like `memset` and `memcpy`
+* Advanced pointer manipulation and string operations
 
 ## Files Description
 
@@ -46,13 +47,13 @@ This project covers fundamental concepts in C programming:
 * `9-strcpy.c` - Function that copies a string
 
 ### Advanced Functions
-* `100-rot13.c` - Function that encodes a string using ROT13 cipher
-* `100-set_string.c` - Function that sets the value of a pointer to a char
-* `101-print_number.c` - Function that prints an integer using only _putchar
-* `101-crackme_password` - File containing password for crackme2 executable
-* `102-magic.c` - Program demonstrating pointer arithmetic
-* `103-infinite_add.c` - Function that adds two numbers of any size
-* `104-print_buffer.c` - Function that prints a buffer in a specific format
+* `100-rot13.c` - Function that encodes a string using ROT13 cipher (replaces each letter with the 13th letter after it)
+* `100-set_string.c` - Function that sets the value of a pointer to a char (double pointer manipulation)
+* `101-print_number.c` - Function that prints an integer using only _putchar (no arrays, pointers, or hard-coded special values)
+* `101-crackme_password` - File containing password for crackme2 executable (no newline)
+* `102-magic.c` - Program demonstrating pointer arithmetic and memory manipulation
+* `103-infinite_add.c` - Function that adds two numbers of any size stored as strings
+* `104-print_buffer.c` - Function that prints a buffer with hexadecimal and ASCII representation
 
 ### Support Files
 * `main.h` - Header file containing all function prototypes
@@ -64,6 +65,8 @@ This project covers fundamental concepts in C programming:
 * Code follows the Betty style
 * No global variables are used
 * Each file contains no more than 5 functions
+* Only standard library functions allowed are `malloc`, `free`, and `exit`
+* Allowed syscalls: `read`, `write`, `open`, `close`
 
 ## Compilation
 All files can be compiled using:
@@ -97,4 +100,8 @@ graph TD
     Q --> S[infinite_add]
     Q --> T[print_buffer]
     Q --> U[crackme]
+
+    A --> V[Security]
+    V --> W[Password Handling]
+    V --> X[Buffer Management]
 ```
