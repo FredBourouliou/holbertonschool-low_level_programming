@@ -1,21 +1,58 @@
-C - Variables, if, else, while
+# C - Variables, if, else, while
 
-Task  0. Positive anything is better than negative nothing : This program will assign a random number to the variable n each time it is executed. Complete the source code in order to print whether the number stored in the variable n is positive or negative.
+A collection of C programs demonstrating the use of variables, conditional statements, and loops.
 
-Task  1. The last digit : This program will assign a random number to the variable n each time it is executed. Complete the source code in order to print the last digit of the number stored in the variable n.
+## Author
+* Frédéric Bourouliou
 
-Task  2. I sometimes suffer from insomnia. And when I can't fall asleep, I play what I call the alphabet game : Write a program that prints the alphabet in lowercase, followed by a new line.
+## Project Description
+This project contains various C programs that explore fundamental programming concepts including:
+* Variables and data types
+* Conditional statements (if/else)
+* Loops (while)
+* ASCII character manipulation
+* Number combinations and patterns
 
-Task  3. alphABET : Write a program that prints the alphabet in lowercase, and then in uppercase, followed by a new line.
+## Files Description
 
-Task  4. When I was having that alphabet soup, I never thought that it would pay off : Write a program that prints the alphabet in lowercase, followed by a new line.
+* `0-positive_or_negative.c`: Program that determines if a random number is positive, negative, or zero
+* `1-last_digit.c`: Program that prints the last digit of a random number
+* `2-print_alphabet.c`: Program that prints the alphabet in lowercase
+* `3-print_alphabets.c`: Program that prints the alphabet in lowercase, then uppercase
+* `4-print_alphabt.c`: Program that prints the alphabet in lowercase except 'q' and 'e'
+* `5-print_numbers.c`: Program that prints single digit numbers
+* `6-print_numberz.c`: Program that prints single digit numbers using putchar
+* `7-print_tebahpla.c`: Program that prints the lowercase alphabet in reverse
+* `8-print_base16.c`: Program that prints all numbers of base 16 in lowercase
+* `9-print_comb.c`: Program that prints all possible combinations of single-digit numbers
+* `100-print_comb3.c`: Program that prints all possible different combinations of two digits
+* `101-print_comb4.c`: Program that prints all possible different combinations of three digits
+* `102-print_comb5.c`: Program that prints all possible combinations of two two-digit numbers
 
-Task  5. Numbers : Write a program that prints all single digit numbers of base 10 starting from 0, followed by a new line.
+## Requirements
+* All programs are compiled on Ubuntu 20.04 LTS using `gcc`
+* Code follows the Betty style
+* No global variables allowed
+* No more than 5 functions per file
+* Only allowed C standard library functions are: `printf`, `putchar`, `srand`, `rand`, `time`
+* All function prototypes should be included in a header file called `main.h`
 
-Task  6. Numberz : Write a program that prints all single digit numbers of base 10 starting from 0, followed by a new line.
+## Compilation
+All files can be compiled using:
+```bash
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 [filename.c] -o [output]
+```
 
-Task  7. Smile in the mirror : Write a program that prints the lowercase alphabet in reverse, followed by a new line.
+## Flowchart
+```mermaid
+graph TD
+    A[Start] --> B{Check Number}
+    B -->|n > 0| C[Print Positive]
+    B -->|n = 0| D[Print Zero]
+    B -->|n < 0| E[Print Negative]
+    C --> F[End]
+    D --> F
+    E --> F
+```
 
-Task  8. Hexadecimal : Write a program that prints all the numbers of base 16 in lowercase, followed by a new line.
-
-Task  9. Patience, persistence and perspiration make an unbeatable combination for success : Write a program that prints all possible combinations of single-digit numbers.
+This flowchart represents the basic logic flow of the `0-positive_or_negative.c` program, which is a fundamental example of conditional statements in this project.
