@@ -95,4 +95,4 @@ char **strtow(char *str)
 	words[j] = NULL;
 
 	return (words);
-} 
+}
