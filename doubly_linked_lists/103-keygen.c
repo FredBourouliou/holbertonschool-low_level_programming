@@ -2,96 +2,131 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned int f1(char *str)
+/**
+ * f1 - Function that generates first character
+ * @str: username
+ * Return: first character of key
+ */
+char f1(char *str)
 {
-    unsigned int len = 0;
-    unsigned int i;
-    unsigned int result = 0;
+    int len = strlen(str);
+    int ch;
+    int vch = 0;
 
-    len = strlen(str);
-    for (i = 0; i < len; i++)
-        result += str[i];
-    return (result ^ 0x3B);
+    for (ch = 0; ch < len; ch++)
+        vch += str[ch];
+    return ((vch ^ 59) & 63) + 'A';
 }
 
-unsigned int f2(char *str)
+/**
+ * f2 - Function that generates second character
+ * @str: username
+ * Return: second character of key
+ */
+char f2(char *str)
 {
-    unsigned int len = 0;
-    unsigned int i;
-    unsigned int result = 1;
+    int len = strlen(str);
+    int ch;
+    long vch = 1;
 
-    len = strlen(str);
-    for (i = 0; i < len; i++)
-        result *= str[i];
-    return (result ^ 0x4F);
+    for (ch = 0; ch < len; ch++)
+        vch = vch * str[ch];
+    return ((vch ^ 79) & 63) + 'A';
 }
 
-unsigned int f3(char *str)
+/**
+ * f3 - Function that generates third character
+ * @str: username
+ * Return: third character of key
+ */
+char f3(char *str)
 {
-    unsigned int len = 0;
-    unsigned int i;
-    unsigned int result;
-    unsigned char current;
+    int len = strlen(str);
+    int ch;
+    long vch = str[0];
 
-    result = (unsigned int)str[0];
-    len = strlen(str);
-    for (i = 0; i < len; i++)
+    for (ch = 0; ch < len; ch++)
+        if (str[ch] > vch)
+            vch = str[ch];
+    srand(vch ^ 0x1234);
+    return (rand() & 63) + 'A';
+}
+
+/**
+ * f4 - Function that generates fourth character
+ * @str: username
+ * Return: fourth character of key
+ */
+char f4(char *str)
+{
+    int len = strlen(str);
+    int ch;
+    long vch = 0;
+
+    for (ch = 0; ch < len; ch++)
+        vch = str[ch] * str[ch] + vch;
+    return ((vch ^ 9) & 63) + 'A';
+}
+
+/**
+ * f5 - Function that generates fifth character
+ * @str: username
+ * Return: fifth character of key
+ */
+char f5(char *str)
+{
+    int len = strlen(str);
+    int ch;
+    long vch = 0;
+
+    for (ch = 0; ch < len; ch++)
     {
-        current = (unsigned char)str[i];
-        if ((unsigned int)current > result)
-            result = (unsigned int)current;
+        vch = vch + str[ch];
     }
-    srand(result ^ 0x1337);
-    return (rand() & 0x3F);
+    return ((vch ^ 0x55) & 63) + 'A';
 }
 
-unsigned int f4(char *str)
+/**
+ * f6 - Function that generates sixth character
+ * @str: username
+ * Return: sixth character of key
+ */
+char f6(char *str)
 {
-    unsigned int len = 0;
-    unsigned int i;
-    unsigned int result = 0;
+    int ch;
+    long vch = 0;
 
-    len = strlen(str);
-    for (i = 0; i < len; i++)
-        result += str[i] * str[i];
-    return (result ^ 0x4F);
+    for (ch = 0; str[ch]; ch++)
+        vch = rand() & 63;
+    return (vch + 'A');
 }
 
-unsigned int f5(char *str)
+/**
+ * main - Entry point
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 on success
+ */
+int main(int argc, char *argv[])
 {
-    unsigned int i;
-    unsigned int result = 0;
-
-    for (i = 0; str[i]; i++)
-        result += str[i];
-    return (result ^ 0x55);
-}
-
-int main(int argc, char **argv)
-{
-    char *username;
     char key[7];
-    unsigned int i;
+    char *username;
 
     if (argc != 2)
     {
-        printf("Usage: %s username\n", argv[0]);
+        printf("Correct usage: ./keygen5 username\n");
         return (1);
     }
 
     username = argv[1];
-    key[0] = ((f1(username) ^ 0x3B) & 0x3F) + 'A';
-    key[1] = ((f2(username) ^ 0x4F) & 0x3F) + 'A';
-    key[2] = ((f3(username)) & 0x3F) + 'A';
-    key[3] = ((f4(username) ^ 0x4F) & 0x3F) + 'A';
-    key[4] = ((f5(username) ^ 0x55) & 0x3F) + 'A';
-    key[5] = 0;
-
-    for (i = 0; username[i]; i++)
-        key[5] += username[i];
-    key[5] = (key[5] & 0x3F) + 'A';
+    key[0] = f1(username);
+    key[1] = f2(username);
+    key[2] = f3(username);
+    key[3] = f4(username);
+    key[4] = f5(username);
+    key[5] = f6(username);
     key[6] = '\0';
 
-    printf("%s\n", key);
+    printf("%s", key);
     return (0);
 }
